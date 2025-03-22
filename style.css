@@ -1,6 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,40 +13,51 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color:#9873fe;
-}
-p{
-font-size: 22px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
 }
 
 .container {
-  background-color:#fff;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 1rem;
-  min-height: 45vh;
-  width: 50vh;
- 
-  
+  min-height: 50vh;
+  width: 55vh;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
 }
 
 form {
   margin: 2rem 0 1rem 0;
 }
 
-form select,
-button,
-input {
+form select, button, input {
   width: 100%;
   border: none;
   outline: none;
   border-radius: 0.75rem;
+  transition: all 0.3s ease-in-out;
 }
 
 form input {
-  border: 1px solid lightgray;
+  border: 2px solid #ccc;
   font-size: 1rem;
   height: 3rem;
   padding-left: 0.5rem;
+}
+
+form input:focus {
+  border: 2px solid #2575fc;
+  box-shadow: 0 0 10px rgba(37, 117, 252, 0.3);
 }
 
 .dropdown {
@@ -54,47 +70,58 @@ form input {
 .dropdown i {
   font-size: 1.5rem;
   margin-top: 1rem;
-}
-
-.select-container img {
-  max-width: 2rem;
+  color: #2575fc;
 }
 
 .select-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6rem;
+  width: 7rem;
   border-radius: 0.5rem;
-  border: 2px solid lightgray;
+  border: 2px solid #ccc;
+  padding: 5px;
+}
+
+.select-container img {
+  max-width: 2rem;
+  margin-right: 8px;
 }
 
 .select-container select {
   font-size: 1rem;
-  width: auto;
+  background: transparent;
+  cursor: pointer;
 }
 
 .msg {
-  margin: 2rem 0 2rem 0;
-  background-color: #e5dbff;
-  height:1rem;
+  margin: 2rem 0;
+  background: #e5dbff;
   text-align: center;
-  border-radius:1.5rem;
+  border-radius: 1.5rem;
   padding: 0.8em 0;
-  color:#02002c;
+  color: #02002c;
   font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.msg.loading {
+  background: #ffbe76;
+  color: #000;
 }
 
 form button {
   height: 3rem;
-  background-color: #af4d98;
-  color: #fff;
-  font-size: 1.15rem;
+  background: #ff6b6b;
+  color: white;
+  font-size: 1.2rem;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.amount input:hover{
-  border:2px solid blue;
+form button:hover {
+  background: #ff4757;
+  transform: scale(1.05);
 }
-
 

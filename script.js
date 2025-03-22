@@ -1,3 +1,5 @@
+
+
 const BASE_URL = "https://v6.exchangerate-api.com/v6/bff0cd6672d3b7b218d0468f/latest";
 
 const dropdowns = document.querySelectorAll(".dropdown select");
@@ -5,8 +7,6 @@ const btn = document.querySelector("form button");
 const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
 const msg = document.querySelector(".msg");
-
-
 
 const populateDropdowns = () => {
   for (let select of dropdowns) {
@@ -31,22 +31,25 @@ const updateExchangeRate = async () => {
   amount.value = amtVal;
 
   const URL = `${BASE_URL}/${fromCurr.value}`;
-  msg.innerText = "Loading...";
+  msg.innerText = "Fetching latest rates...";
+  msg.classList.add("loading");
 
   try {
     let response = await fetch(URL);
     if (!response.ok) throw new Error("Failed to fetch data");
+    
     let data = await response.json();
-     console.log("API Response:", data); // Logging API response for debugging
     let rate = data.conversion_rates[toCurr.value];
 
     if (!rate) throw new Error("Rate not found for selected currency");
 
     let finalAmount = (amtVal * rate).toFixed(2);
     msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
+    msg.classList.remove("loading");
   } catch (error) {
-    console.error("Error:", error); // Logging error for debugging
-    msg.innerText = "Error fetching exchange rate. Please try again.";
+    console.error("Error:", error);
+    msg.innerText = "Error fetching exchange rate. Try again.";
+    msg.classList.add("loading");
   }
 };
 
@@ -68,4 +71,3 @@ const init = () => {
 };
 
 window.addEventListener("load", init);
-
